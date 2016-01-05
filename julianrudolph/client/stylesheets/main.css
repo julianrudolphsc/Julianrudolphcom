@@ -7,11 +7,11 @@
  * URL: http://blacktie.co
  */
 
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 body {
   	background-color: #ffffff;
-  	font-family: 'Montserrat', sans-serif;
+  	font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: #555;
@@ -22,7 +22,7 @@ body {
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     color: #333;
 }
@@ -48,7 +48,7 @@ p {
 
 /* Links */
 a {
-    color: #1abc9c;
+    color: #BC1A1A;
     word-wrap: break-word;
 
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -95,8 +95,8 @@ a:after {
 }
 
 .navbar-inverse {
-	background-color: #1abc9c;
-	border-color: #16a085;
+	background-color: rgb(188, 26, 26);
+	border-color: #a01616;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -122,7 +122,7 @@ a:after {
 }
 
 .progress-bar-theme {
-  background-color: #1abc9c;
+  background-color: rgb(188, 26, 26);
 }
 
 
@@ -236,7 +236,11 @@ bt {
 
 /* glyphicon Configuration */
 
-.glyphicon {
+.fa  {
 	font-size: 40px;
-	color: #1abc9c;
+	color: rgb(188, 26, 26);
+}
+
+.edit-image{
+  width: 100%;
 }
