@@ -19,3 +19,13 @@ Meteor.methods({
     Posts.remove(Posts.findOne({_id: currentPost}));
   }
 });
+
+Posts.allow({
+  'remove': function(){
+    return true;
+  },
+
+  'update':function(){
+    return true;
+  }
+});

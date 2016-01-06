@@ -41,17 +41,11 @@ Template.edit_post.events({
 });
 
 Template.list_posts.events({
-  'click .delete-post': function(event){
-    event.preventDefault();
-    var currentPost = this.params._id;
-    if(confirm("delete?")){
-      Meteor.call('deletePost', function(error, result){
-        if(error){
-          FlashMessages.sendError("you messed up");
-        }else{
-          console.log("all is well");
-        }
-      })
-    }
+  'click .delete-post': function(){
+    // var currentUser = this.user._id;
+
+    Posts.remove(this._id);
+    return false;
   }
+  
 });
