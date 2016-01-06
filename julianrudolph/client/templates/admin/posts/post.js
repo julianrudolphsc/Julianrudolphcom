@@ -1,18 +1,18 @@
 Template.add_post.events({
   'submit .add_post_form': function(event){
+    event.preventDefault();
     var title = event.target.title.value;
     var body = event.target.body.value;
-
-    //insert
-    Posts.insert({
-      title: title,
-      body: body
+    Meteor.call('insertPost', title, body, function(error, result){
+      if(error){
+        FlashMessages.sendError("you fucked up!")
+      }else{
+        console.log(title)
+      }
     });
+
     FlashMessages.sendSuccess("Post Added");
     Router.go("/admin/posts");
-
-    //no submit
-    return false;
   }
 });
 
@@ -42,11 +42,16 @@ Template.edit_post.events({
 
 Template.list_posts.events({
   'click .delete-post': function(event){
-    if(confirm("Delete Post?")){
-      Posts.remove(this._id);
-      FlashMessages.sendSuccess("Post Deleted!")
-      //no submit
-      return false;
+    event.preventDefault();
+    var currentPost = this.params._id;
+    if(confirm("delete?")){
+      Meteor.call('deletePost', function(error, result){
+        if(error){
+          FlashMessages.sendError("you messed up");
+        }else{
+          console.log("all is well");
+        }
+      })
     }
   }
 });

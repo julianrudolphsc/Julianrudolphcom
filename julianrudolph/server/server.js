@@ -7,3 +7,15 @@ Meteor.publish('posts', function(){
 Meteor.publish('projectImages', function(){
   return ProjectImages.find();
 });
+
+Meteor.methods({
+  "insertPost": function(title, body){
+    Posts.insert({
+      title: title,
+      body: body
+    });
+  },
+  'deletepost': function(){
+    Posts.remove(Posts.findOne({_id: currentPost}));
+  }
+});
