@@ -3,7 +3,8 @@ Template.layout.onRendered(function(){
 });
 
 Template.add_project.events({
-  'submit .add_project_form': function(){
+  'submit .add_project_form': function(event){
+    event.preventDefault();
     var name = event.target.name.value;
     var type = event.target.type.value;
     var client = event.target.client.value;
@@ -16,34 +17,17 @@ Template.add_project.events({
       fsFile = new FS.File(file);
       ProjectImages.insert(fsFile, function(err, result){
         if(!err){
-          var projectImage = '/cfs/files/ProjectImages/' + result._id;
-
-          //insert Project with image
-          Projects.insert({
-            name: name,
-            description: description,
-            type: type,
-            client: client,
-            projectDate: projectDate,
-            projectImage: projectImage
+          // var projectImage = '/cfs/files/ProjectImages/' + result._id;
+          FlashMessages.sendError(err.reason);
+        }else{
+          Meteor.call('insertProject', name, type, client, description, projectDate, file, function(error, result){
+            var projectImage = '/cfs/files/ProjectImages/' + result._id;
           });
+          FlashMessages.sendSuccess("Project Added");
+          Router.go('/admin/projects');
+          return false;
         }
-      });
-    }else{
-      //insert project no image
-      Projects.insert({
-        name: name,
-        description: description,
-        type: type,
-        client: client,
-        projectDate: projectDate
-      });
-    }
-    FlashMessages.sendSuccess("Project Added");
-    Router.go('/admin/projects');
-    return false;
-  }
-});
+  });
 
 Template.edit_project.events({
   'submit .edit_project_form': function(){
@@ -101,8 +85,6 @@ Template.list_projects.events({
     if(confirm("Delete Project?")){
       Projects.remove(this._id);
       FlashMessages.sendSuccess("Project Deleted!")
-      //no submit
-      return false;
     }
-  }
-});
+    return false
+  });

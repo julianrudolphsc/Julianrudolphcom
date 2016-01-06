@@ -29,3 +29,30 @@ Posts.allow({
     return true;
   }
 });
+
+Meteor.methods({
+  'insertProject': function(name, description, type, client, projectDate, projectImage){
+    Projects.insert({
+      name: name,
+      description: description,
+      type: type,
+      client: client,
+      projectDate: projectDate,
+      projectImage: projectImage
+    });
+  }
+});
+
+Projects.allow({
+  'insert': function(){
+    return true;
+  },
+
+  'remove': function(){
+    return true;
+  },
+
+  'update':function(){
+    return true;
+  }
+});
