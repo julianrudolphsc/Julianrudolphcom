@@ -22,34 +22,80 @@ Router.map(function(){
   //posts
   this.route('list_post', {
     path: '/admin/posts',
-    template: 'list_post'
+    template: 'list_posts',
+    data: function(){
+      templateData = {
+        posts: Posts.find()
+      };
+      return templateData;
+    },
+    onBeforeAction: function(){
+      if(Meteor.user() == null){
+        Router.go('/');
+      }
+      this.next();
+    }
   });
 
   this.route('add_post', {
     path: '/admin/posts/add',
-    template: 'add_post'
+    template: 'add_post',
+    onBeforeAction: function(){
+      if(Meteor.user() == null){
+        Router.go('/');
+      }
+      this.next();
+    }
   });
 
   this.route('edit_post', {
     path: '/admin/posts/:_id/edit',
-    template: 'edit_post'
+    template: 'edit_post',
+    data: function(){
+      var currentPost = this.params._id;
+      return Posts.findOne({_id: currentPost});
+    },
+    onBeforeAction: function(){
+      if(Meteor.user() == null){
+        Router.go('/');
+      }
+      this.next();
+    }
   });
 
 
   //projects
   this.route('list_projects', {
     path: '/admin/projects',
-    template: 'list_projects'
+    template: 'list_projects',
+    onBeforeAction: function(){
+      if(Meteor.user() == null){
+        Router.go('/');
+      }
+      this.next();
+    }
   });
 
   this.route('add_project', {
     path: '/admin/projects/add',
-    template: 'add_project'
+    template: 'add_project',
+    onBeforeAction: function(){
+      if(Meteor.user() == null){
+        Router.go('/');
+      }
+      this.next();
+    }
   });
 
   this.route('edit_project', {
     path: '/admin/projects/:_id/edit',
-    template: 'edit_project'
+    template: 'edit_project',
+    onBeforeAction: function(){
+      if(Meteor.user() == null){
+        Router.go('/');
+      }
+      this.next();
+    }
   });
 
   //login

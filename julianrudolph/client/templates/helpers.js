@@ -33,3 +33,8 @@ Template.layout.events({
     return false;
   }
 });
+
+//date time format
+Template.registerHelper('formatDate', function(date){
+  return moment(date).format('MMMM do YYYY, h:mm a');
+});
