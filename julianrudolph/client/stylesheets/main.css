@@ -46,6 +46,10 @@ p {
     text-align: center;
 }
 
+.edit-image{
+  width: 100px;
+}
+
 /* Links */
 a {
     color: #BC1A1A;

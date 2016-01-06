@@ -1,9 +1,10 @@
 <body>
+  {{> head}}
   {{renderPage}}
 </body>
 
 <template name="layout">
-  {{> head}}
+
   {{> navbar}}
   {{> flashMessages}}
   {{> yield}}

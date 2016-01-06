@@ -1,4 +1,5 @@
 <template name="navbar">
+  {{head}}
   <!-- Static navbar -->
    <div class="navbar navbar-inverse navbar-static-top">
      <div class="container">
@@ -18,7 +19,7 @@
            <li><a href="{{pathFor 'contact'}}">Contact</a></li>
            {{#if currentUser}}
            <li><a href="{{pathFor 'list_post'}}">-Admin Posts-</a></li>
-           <li><a href="{{pathFor 'list_projects'}}">-Admin Projecs-</a></li>
+           <li><a href="{{pathFor 'list_projects'}}">-Admin Projects-</a></li>
              <li><a class="logout-user">Logout</a></li>
            {{/if}}
          </ul>
