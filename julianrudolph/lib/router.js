@@ -52,4 +52,10 @@ Router.map(function(){
     template: 'edit_project'
   });
 
+  //login
+  this.route('login', {
+    path: '/admin',
+    template: 'login'
+  });
+
 });
