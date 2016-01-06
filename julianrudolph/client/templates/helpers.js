@@ -47,3 +47,9 @@ Template.registerHelper('getAdminName', function(){
 Template.registerHelper('getAdminImage', function(){
   return '/assets/img/user.png';
 });
+
+Template.work.helpers({
+  projects: function(){
+    return Projects.find();
+  }
+});

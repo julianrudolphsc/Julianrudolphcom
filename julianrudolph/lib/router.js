@@ -9,7 +9,25 @@ Router.map(function(){
   })
 
   this.route('about');
-  this.route('work');
+  this.route('work', {
+    path: '/work',
+    template: 'work',
+    data: function(){
+      templateData = {
+        projects: Projects.find()
+      };
+      return templateData;
+    }
+  });
+
+  this.route('project', {
+    path: '/project/:_id',
+    template: 'project',
+    data: function(){
+      var currentProject = this.params._id;
+      return Projects.findOne({_id: currentProject});
+    }
+  })
 
   this.route('blog', {
     path: '/blog',
@@ -19,7 +37,7 @@ Router.map(function(){
         posts: Posts.find()
       };
       return templateData;
-    },
+    }
   })
 
   this.route('contact');
