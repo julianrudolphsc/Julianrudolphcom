@@ -1,3 +1,5 @@
+Meteor.subscribe('projects');
+Meteor.subscribe('posts');
 Template.login.events({
   'submit .login-user': function(event){
     var email = event.target.email.value;
