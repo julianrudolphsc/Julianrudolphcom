@@ -38,3 +38,12 @@ Template.layout.events({
 Template.registerHelper('formatDate', function(date){
   return moment(date).format('MMMM do YYYY, h:mm a');
 });
+Template.registerHelper('getSiteTitle', function(){
+  return 'Julian Rudolph';
+});
+Template.registerHelper('getAdminName', function(){
+  return 'Julian Rudolph';
+});
+Template.registerHelper('getAdminImage', function(){
+  return '/assets/img/user.png';
+});

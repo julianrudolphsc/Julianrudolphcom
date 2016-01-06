@@ -13,10 +13,25 @@ Router.map(function(){
 
   this.route('blog', {
     path: '/blog',
-    template: 'blog'
+    template: 'blog',
+    data: function(){
+      templateData = {
+        posts: Posts.find()
+      };
+      return templateData;
+    },
   })
 
   this.route('contact');
+  //post route
+  this.route('blog_post', {
+    path: '/blog/post/:_id',
+    template: 'blog_post',
+    data: function(){
+      var currentPost = this.params._id;
+      return Posts.findOne({_id: currentPost});
+    }
+  });
 
   //admin routes
   //posts
